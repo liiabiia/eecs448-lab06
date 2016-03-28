@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.Component;
 import java.awt.GridLayout;
-
 import java.util.Random;
 import java.lang.System;
 
@@ -14,7 +13,9 @@ public class DiceControl extends JFrame implements ActionListener {
 	JLabel label;
 	JTextField text;
 	JLabel dieDisplay; 
+	JFrame popUp;
 	public DiceControl(){
+		popUp = new JFrame("Dialogue");
 		content = new JPanel(new GridLayout(2, 0));
 		dieDisplay = new JLabel("You rolled: ");
 		label = new JLabel("Input die side number");
@@ -23,8 +24,9 @@ public class DiceControl extends JFrame implements ActionListener {
 		button.addActionListener(this); //change this to whatever you end up doing for the action
 		
 		content.add(dieDisplay);
-		content.add(label);
 		content.add(text);
+		content.add(label);
+		
 		content.add(button);
 		this.getContentPane().add(content);
 	}
@@ -61,6 +63,7 @@ public class DiceControl extends JFrame implements ActionListener {
 				System.out.println(dieInfo);
 			} else {
 				//alert saying that invalid input was given
+				JOptionPane.showMessageDialog(popUp, "Error, invalid input");
 			}
 	}
 
